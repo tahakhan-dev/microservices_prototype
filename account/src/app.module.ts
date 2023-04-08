@@ -9,12 +9,12 @@ import { Account } from './accounts/entities/account.entity';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: '104.198.153.245',
-      port: 3306,
-      username: 'root',
-      password: 'admin@123',
-      database: 'micro_prototype_account',
+      type: process.env.DB_TYPE,
+      host: process.env.HOST,
+      port: process.env.PORT,
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DATABASE,
       logging: true,
       entities: [
         Account
