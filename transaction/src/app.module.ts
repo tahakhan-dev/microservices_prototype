@@ -8,12 +8,12 @@ import { TransactionModule } from './transaction/transaction.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: '104.198.153.245',
-      port: 3306,
-      username: 'root',
-      password: 'admin@123',
-      database: 'micro_prototype_transaction',
+      type: process.env.TYPE,
+      host: process.env.HOST,
+      port: process.env.PORT,
+      username: process.env.USERNAME,
+      password: process.env.PASSWORD,
+      database: process.env.DATABASE,
       logging: true,
       entities: [
         Transaction
