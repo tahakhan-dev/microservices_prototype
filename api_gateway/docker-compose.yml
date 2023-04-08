@@ -1,0 +1,86 @@
+version : '3.2'
+services:
+    lb:
+        image: haproxy:2.2
+        restart: always
+        ports:
+            - "3005:3005"
+        volumes:
+            - ./haproxy:/usr/local/etc/haproxy
+        deploy:
+            resources:
+                limits:
+                    memory: 500M
+        container_name: Haproxy3
+    nestgatewayapp1:
+        image: nestapigateway
+        restart: always
+        deploy:
+            resources:
+                limits:
+                    memory: 500M
+        environment:
+            - PORT=5121
+        container_name: NestApiGatewayServer1
+        env_file:
+        - .env
+    nestgatewayapp2:
+        image: nestapigateway
+        restart: always
+        deploy:
+            resources:
+                limits:
+                    memory: 500M
+        environment:
+            - PORT=5222
+        container_name: NestApiGatewayServer2
+        env_file:
+        - .env
+    nestgatewayapp3:
+        image: nestapigateway
+        restart: always
+        deploy:
+            resources:
+                limits:
+                    memory: 500M
+        environment:
+            - PORT=5323
+        container_name: NestApiGatewayServer3
+        env_file:
+        - .env
+    nestgatewayapp4:
+        image: nestapigateway
+        restart: always
+        deploy:
+            resources:
+                limits:
+                    memory: 500M
+        environment:
+            - PORT=5324
+        container_name: NestApiGatewayServer4
+        env_file:
+        - .env    
+    nestgatewayapp5:
+        image: nestapigateway
+        restart: always
+        deploy:
+            resources:
+                limits:
+                    memory: 500M
+        environment:
+            - PORT=5325
+        container_name: NestApiGatewayServer5
+        env_file:
+        - .env
+    nestgatewayapp6:
+        image: nestapigateway
+        restart: always
+        deploy:
+            resources:
+                limits:
+                    memory: 500M
+        environment:
+            - PORT=5326
+        container_name: NestApiGatewayServer6
+        env_file:
+        - .env

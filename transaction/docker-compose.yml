@@ -1,0 +1,86 @@
+version : '3.2'
+services:
+    lb:
+        image: haproxy:2.2
+        restart: always
+        ports:
+            - "4335:4335"
+        volumes:
+            - ./haproxy:/usr/local/etc/haproxy
+        deploy:
+            resources:
+                limits:
+                    memory: 500M
+        container_name: Haproxy2
+    nodetransactionapp1:
+        image: nesttransactionservice
+        restart: always
+        deploy:
+            resources:
+                limits:
+                    memory: 500M
+        environment:
+            - PORT=4121
+        container_name: NodeTransactionServer1
+        env_file:
+        - .env
+    nodetransactionapp2:
+        image: nesttransactionservice
+        restart: always
+        deploy:
+            resources:
+                limits:
+                    memory: 500M
+        environment:
+            - PORT=4222
+        container_name: NodeTransactionServer2
+        env_file:
+        - .env
+    nodetransactionapp3:
+        image: nesttransactionservice
+        restart: always
+        deploy:
+            resources:
+                limits:
+                    memory: 500M
+        environment:
+            - PORT=4323
+        container_name: NodeTransactionServer3
+        env_file:
+        - .env
+    nodetransactionapp4:
+        image: nesttransactionservice
+        restart: always
+        deploy:
+            resources:
+                limits:
+                    memory: 500M
+        environment:
+            - PORT=4324
+        container_name: NodeTransactionServer4
+        env_file:
+        - .env    
+    nodetransactionapp5:
+        image: nesttransactionservice
+        restart: always
+        deploy:
+            resources:
+                limits:
+                    memory: 500M
+        environment:
+            - PORT=4325
+        container_name: NodeTransactionServer5
+        env_file:
+        - .env
+    nodetransactionapp6:
+        image: nesttransactionservice
+        restart: always
+        deploy:
+            resources:
+                limits:
+                    memory: 500M
+        environment:
+            - PORT=4326
+        container_name: NodeTransactionServer6
+        env_file:
+        - .env

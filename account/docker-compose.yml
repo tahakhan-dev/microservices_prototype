@@ -1,0 +1,86 @@
+version : '3.2'
+services:
+    lb:
+        image: haproxy:2.2
+        restart: always
+        ports:
+            - "3335:3335"
+        volumes:
+            - ./haproxy:/usr/local/etc/haproxy
+        deploy:
+            resources:
+                limits:
+                    memory: 500M
+        container_name: Haproxy
+    nodeaccountapp1:
+        image: nestaccountservice
+        restart: always
+        deploy:
+            resources:
+                limits:
+                    memory: 500M
+        environment:
+            - PORT=3121
+        container_name: NodeAccountServer1
+        env_file:
+        - .env
+    nodeaccountapp2:
+        image: nestaccountservice
+        restart: always
+        deploy:
+            resources:
+                limits:
+                    memory: 500M
+        environment:
+            - PORT=3222
+        container_name: NodeAccountServer2
+        env_file:
+        - .env
+    nodeaccountapp3:
+        image: nestaccountservice
+        restart: always
+        deploy:
+            resources:
+                limits:
+                    memory: 500M
+        environment:
+            - PORT=3323
+        container_name: NodeAccountServer3
+        env_file:
+        - .env
+    nodeaccountapp4:
+        image: nestaccountservice
+        restart: always
+        deploy:
+            resources:
+                limits:
+                    memory: 500M
+        environment:
+            - PORT=3324
+        container_name: NodeAccountServer4
+        env_file:
+        - .env    
+    nodeaccountapp5:
+        image: nestaccountservice
+        restart: always
+        deploy:
+            resources:
+                limits:
+                    memory: 500M
+        environment:
+            - PORT=3325
+        container_name: NodeAccountServer5
+        env_file:
+        - .env
+    nodeaccountapp6:
+        image: nestaccountservice
+        restart: always
+        deploy:
+            resources:
+                limits:
+                    memory: 500M
+        environment:
+            - PORT=3326
+        container_name: NodeAccountServer6
+        env_file:
+        - .env
